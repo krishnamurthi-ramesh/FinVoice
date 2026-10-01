@@ -19,10 +19,14 @@ def main():
         print("⚠️ WARNING: GROQ_API_KEY is not set in .env! LLM features will fail.")
         
     if args.mode == "ui":
-        print(f"🚀 Starting FinVoice: Production BFSI Support Web Application on http://127.0.0.1:{args.port}...")
+        print(f"🚀 Starting FinVoice: Production BFSI Support Web Application on port {args.port}...")
         from frontend.app import ui
-        # Launching with Gradio FastApi integration
-        ui.launch(server_port=args.port)
+        
+        # HuggingFace Spaces injects SPACE_ID. If present, we must bind to 0.0.0.0 on port 7860.
+        if os.getenv("SPACE_ID"):
+            ui.launch(server_name="0.0.0.0", server_port=7860)
+        else:
+            ui.launch(server_port=args.port)
     else:
         print(f"🚀 Starting BFSI Voice Agent Production API on http://127.0.0.1:{args.port}/docs ...")
         from backend.main import app as fastapi_app
