@@ -1,3 +1,13 @@
+---
+title: FinVoice
+emoji: 🏦
+colorFrom: blue
+colorTo: indigo
+sdk: gradio
+sdk_version: "4.36.0"
+app_file: app.py
+pinned: false
+---
 # 🏦 FinVoice AI - Production BFSI Voice Agent
 
 An autonomous, multi-lingual AI voice agent built for the Banking, Financial Services, and Insurance (BFSI) sector. This system is designed as a Forward Deployed Engineering (FDE) prototype that routes real-time voice queries using a stateful agent graph, processes Retrieval-Augmented Generation (RAG) for banking policies, calls mock REST APIs for customer data, and gracefully escalates frustrated customers to human agents.
